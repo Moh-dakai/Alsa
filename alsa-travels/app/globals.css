@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --color-navy: #1B2254;
+  --color-navy-dark: #0D1138;
+  --color-amber: #F5A623;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--color-navy-dark);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy);
+  border-radius: 3px;
+}
+
+/* ── Utility classes ── */
+.section-padding {
+  @apply px-4 py-16 md:px-8 lg:px-16 xl:px-24;
+}
+
+.container-max {
+  @apply max-w-7xl mx-auto;
+}
+
+.btn-primary {
+  @apply bg-amber text-navy-dark font-bold px-6 py-3 rounded-lg hover:bg-amber-dark transition-all duration-200 inline-flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0;
+}
+
+.btn-secondary {
+  @apply bg-transparent text-white font-semibold px-6 py-3 rounded-lg border-2 border-white hover:bg-white hover:text-navy-dark transition-all duration-200 inline-flex items-center gap-2;
+}
+
+.btn-outline-navy {
+  @apply bg-transparent text-navy font-semibold px-6 py-3 rounded-lg border-2 border-navy hover:bg-navy hover:text-white transition-all duration-200 inline-flex items-center gap-2;
+}
+
+/* ── Card hover effect ── */
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl;
+}
+
+/* ── Stars ── */
+.stars {
+  color: var(--color-amber);
+}
