@@ -1,0 +1,35 @@
+Header & Navigation
+Hamburger Menu: Positioned on the right side of the top navigation bar.
+
+Menu Links: About Us, China, Visa Processing, Group Trip, Vacation, Individual Business Trip, and specific destination countries.
+
+Hero Section
+Headline: "Number 1 Travel and Tour Agency for Curated China Business Trips" (Targeting business owners traveling from Nigeria).
+
+Visual Carousel: A dynamic image slider featuring 20 to 40 high-quality pictures from previous trips.
+
+Social Proof Overlays:
+
+Rotating customer reviews displaying names (e.g., Mr. Mohammed), user avatars, and Instagram handles.
+
+A prominent, updating counter stating "Over 1,000 Visa Assistance Done."
+
+About Us
+A concise, engaging write-up about the company's mission and expertise, positioned immediately after scrolling past the hero visuals.
+
+Services & Destinations
+Core Offerings: Group Trips, Vacations, Visa Processing, and Individual Business Trips.
+
+Full-Service Destinations: China, Dubai, and Turkey.
+
+Visa-Only Processing: Canada and the UK.
+
+Sub-Pages & Routing
+Clicking on any specific service or country from the menu or homepage routes the user to a dedicated landing page.
+
+These individual pages will outline the specific rules, steps, and requirements for that exact destination (e.g., Chinese visa rules vs. Canadian visa processing).
+
+Call to Action (CTA)
+Global Placement: "Contact Us" buttons must be highly visible across all sections and individual pages.
+
+Action: Links directly to WhatsApp or a dedicated contact number to facilitate the mandatory one-on-one consultation required for visa processing.
