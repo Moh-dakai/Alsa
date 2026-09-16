@@ -10,8 +10,11 @@ export const siteConfig = {
     'Nigeria\'s trusted travel and tours company for China, Dubai, Turkey, Canada and the UK. Group trips, vacations, business trips, and visa processing — handled start to finish.',
 
   // ── Contact ────────────────────────────────────────────────
-  // Replace with your real WhatsApp number (international format, no + or spaces)
-  whatsappNumber: '2348000000000',
+  // WhatsApp numbers in international format, without + or spaces
+  whatsappNumbers: {
+    visa: '2348080458235',
+    travel: '2348083519864',
+  },
   phoneNumber: '+234 800 000 0000',
   email: 'hello@alsatravels.com',
   address: 'Lagos, Nigeria',
@@ -29,10 +32,10 @@ export const siteConfig = {
   },
 } as const
 
-// Helper: generates a WhatsApp deep link with an optional pre-filled message
-export function whatsappLink(message?: string): string {
+// Helper: generates a WhatsApp deep link for the relevant service desk
+export function whatsappLink(message?: string, department: 'visa' | 'travel' = 'travel'): string {
   const encoded = encodeURIComponent(
     message ?? "Hello Alsa Travels! I'd like to enquire about a trip."
   )
-  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encoded}`
+  return `https://wa.me/${siteConfig.whatsappNumbers[department]}?text=${encoded}`
 }

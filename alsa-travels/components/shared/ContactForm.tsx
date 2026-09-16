@@ -29,6 +29,7 @@ export default function ContactForm({ defaultDestination, defaultTripType }: Pro
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const whatsappDepartment = form.trip_type === 'visa_only' ? 'visa' : 'travel'
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -60,7 +61,7 @@ export default function ContactForm({ defaultDestination, defaultTripType }: Pro
           Our travel desk will reach out to you shortly. For faster response, chat with us on WhatsApp.
         </p>
         <a
-          href={whatsappLink(`Hello! I just submitted an inquiry for a ${form.destination || 'trip'}.`)}
+          href={whatsappLink(`Hello! I just submitted an inquiry for a ${form.destination || 'trip'}.`, whatsappDepartment)}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary"
@@ -164,7 +165,7 @@ export default function ContactForm({ defaultDestination, defaultTripType }: Pro
         <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-700">
           {errorMsg}{' '}
           <a
-            href={whatsappLink()}
+            href={whatsappLink(undefined, whatsappDepartment)}
             target="_blank"
             rel="noopener noreferrer"
             className="underline font-semibold"

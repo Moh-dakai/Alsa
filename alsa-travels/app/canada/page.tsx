@@ -63,7 +63,8 @@ const processSteps = [
 
 export default function CanadaPage() {
   const waLink = whatsappLink(
-    "Hello Alsa Travels! I'm interested in Canadian visa processing. Please send me more information."
+    "Hello Alsa Travels! I'm interested in Canadian visa processing. Please send me more information.",
+    'visa'
   )
 
   return (

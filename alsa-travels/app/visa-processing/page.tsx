@@ -72,7 +72,7 @@ export default function VisaProcessingPage() {
         imageSrc="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=80"
         badge="Visa Services 📄"
         ctaText="Start My Visa Application"
-        ctaHref={whatsappLink('Hello! I need help with visa processing.')}
+        ctaHref={whatsappLink('Hello! I need help with visa processing.', 'visa')}
         ctaExternal
       />
 
@@ -187,7 +187,7 @@ export default function VisaProcessingPage() {
                 the exact documents you need and guide you through every step.
               </p>
               <a
-                href={whatsappLink('Hello Alsa Travels! I want to start my visa application.')}
+                href={whatsappLink('Hello Alsa Travels! I want to start my visa application.', 'visa')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-base px-8 py-4 mb-4 w-full sm:w-auto justify-center"

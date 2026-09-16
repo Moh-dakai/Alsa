@@ -72,7 +72,8 @@ const ukHighlights = [
 
 export default function UKPage() {
   const waLink = whatsappLink(
-    "Hello Alsa Travels! I'm interested in UK visa processing. Please send me more information."
+    "Hello Alsa Travels! I'm interested in UK visa processing. Please send me more information.",
+    'visa'
   )
 
   return (
