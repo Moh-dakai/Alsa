@@ -3,6 +3,7 @@ import AboutSection from '@/components/home/AboutSection'
 import ServicesGrid from '@/components/home/ServicesGrid'
 import DestinationCards from '@/components/home/DestinationCards'
 import TestimonialsSection from '@/components/home/TestimonialsSection'
+import LeaveReviewSection from '@/components/home/LeaveReviewSection'
 import StatsBar from '@/components/home/StatsBar'
 import CTABanner from '@/components/home/CTABanner'
 import type { Metadata } from 'next'
@@ -38,6 +39,9 @@ export default function HomePage() {
 
       {/* Testimonials */}
       <TestimonialsSection />
+
+      {/* Leave a Review */}
+      <LeaveReviewSection />
 
       {/* Stats Bar */}
       <StatsBar />

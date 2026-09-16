@@ -27,7 +27,11 @@ export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [mobileDestOpen, setMobileDestOpen] = useState(false)
+  const [hamburgerOpen, setHamburgerOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const hamburgerDropdownRef = useRef<HTMLDivElement>(null)
+  const hamburgerCloseTimer = useRef<number | undefined>(undefined)
+  const dropdownCloseTimer = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -75,7 +79,7 @@ export default function Navbar() {
                 width={120}
                 height={50}
                 priority
-                className="object-contain"
+                className="object-contain drop-shadow-[0_1px_5px_rgba(13,17,56,0.45)]"
               />
             </Link>
 
@@ -131,14 +135,71 @@ export default function Navbar() {
               </a>
             </nav>
 
-            {/* Hamburger — always visible, right side */}
-            <button
-              onClick={() => setDrawerOpen((p) => !p)}
-              className="text-white hover:text-amber transition-colors duration-200 p-1 ml-4 lg:ml-6"
-              aria-label="Toggle menu"
+            {/* Hamburger — hover dropdown on desktop, slide-in drawer on mobile */}
+            <div
+              className="relative lg:ml-4 xl:ml-6 ml-auto"
+              ref={hamburgerDropdownRef}
+              onMouseEnter={() => {
+                clearTimeout(hamburgerCloseTimer.current)
+                setHamburgerOpen(true)
+              }}
+              onMouseLeave={() => {
+                hamburgerCloseTimer.current = window.setTimeout(() => setHamburgerOpen(false), 120)
+              }}
             >
-              <Menu size={26} />
-            </button>
+              {/* Hamburger button */}
+              <button
+                onClick={() => {
+                  const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+                  if (isDesktop) {
+                    setHamburgerOpen((p) => !p)
+                  } else {
+                    setDrawerOpen((p) => !p)
+                  }
+                }}
+                className="text-white hover:text-amber transition-colors duration-200 p-1"
+                aria-label="Toggle menu"
+              >
+                <Menu size={26} />
+              </button>
+
+              {/* Desktop hover dropdown */}
+              <div
+                className={`hidden lg:block absolute top-full right-0 mt-2 w-64 rounded-xl bg-navy border border-white/10 shadow-2xl overflow-hidden transition-all duration-200 origin-top ${
+                  hamburgerOpen
+                    ? 'opacity-100 scale-y-100 pointer-events-auto'
+                    : 'opacity-0 scale-y-95 pointer-events-none'
+                }`}
+              >
+                {mainLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setHamburgerOpen(false)}
+                    className="block px-4 py-2.5 text-sm text-white/85 hover:bg-amber/15 hover:text-amber transition-colors duration-150"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+                {/* Destinations submenu */}
+                <div className="border-t border-white/10 mt-1 pt-1">
+                  <span className="block px-4 py-2 text-xs font-bold uppercase tracking-wider text-white/40">
+                    Destinations
+                  </span>
+                  {destinations.map((dest) => (
+                    <Link
+                      key={dest.href}
+                      href={dest.href}
+                      onClick={() => setHamburgerOpen(false)}
+                      className="block px-4 py-2 text-sm text-white/85 hover:bg-amber/15 hover:text-amber transition-colors duration-150"
+                    >
+                      {dest.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -152,10 +213,10 @@ export default function Navbar() {
         }`}
       />
 
-      {/* Slide-in Drawer */}
+      {/* Slide-in Drawer — mobile */}
       <aside
         aria-label="Site navigation"
-        className={`fixed top-0 right-0 z-50 h-full w-72 bg-navy shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 z-50 h-full w-72 bg-navy shadow-2xl flex flex-col transition-transform duration-300 ease-in-out lg:hidden ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
