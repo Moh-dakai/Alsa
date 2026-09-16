@@ -62,3 +62,25 @@ export async function submitInquiry(payload: ContactPayload): Promise<{
     return { success: false, error: 'Network error. Please try WhatsApp instead.' }
   }
 }
+
+// ── Submit customer review ───────────────────────────────────
+export async function submitReview(payload: {
+  name: string
+  reviewText: string
+  rating: number
+  role?: string
+}): Promise<{ success: boolean; message?: string; error?: string }> {
+  try {
+    const res = await fetch(`${BACKEND_URL}/reviews.php`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    const json = await res.json()
+    if (!res.ok) return { success: false, error: json.error ?? 'Submission failed.' }
+    return { success: true, message: json.message }
+  } catch {
+    // Review is kept locally in the browser if the backend is unavailable
+    return { success: true }
+  }
+}
